@@ -1,0 +1,23 @@
+= Gradle For Testers
+Schalk Cronjé <ysb33r@gmail.com>
+:imagesdir: images
+:sourcedir: snippets
+
+== Schedule
+
+* 08:30-10:45 Introduction to Gradle
+** Building JVM projects
+** The Gradle DSL
+** Building Native projects
+* 10:45-11:00 Break
+* 11:00-12:30 Using testing frameworks
+** Spock
+** Selenium
+** Cucumber
+* 12:30-13:30 Lunch
+*
+*
+* 15:45-16:00 Break
+* 16:00-17:30 Open workshop
+
+// include::[]
