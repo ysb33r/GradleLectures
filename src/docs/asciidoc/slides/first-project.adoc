@@ -2,12 +2,10 @@
 
 * *Workdir*: `examples/jvm-java-first`
 * Open `build.gradle`
-
 [source,groovy]
 ----
 include::{snippets}/java.gradle[]
 ----
-
 * Convention over configuration
 * Intelligence provided by plugin
 

@@ -16,7 +16,7 @@ coderay-css: stylesheets/asciidoctor-coderay.css
 
 == Schedule
 
-* 08:30 Introduction to Gradle
+* 09:00 Introduction to Gradle
 * 10:45 _Break_
 * 11:00 Using testing frameworks
 * 12:30 _Lunch_
@@ -32,10 +32,13 @@ This workshop is licensed under Creative Commons with Attribution.
 
 == Introduction To Gradle
 
-* Building JVM projects
+* Gradle command-line
+* Building a simple JVM project
 * The Gradle DSL
-* Building Native projects
 * Built-in plugins
+* Building Native projects
+
+include::slides/command-line.adoc[]
 
 include::slides/first-things.adoc[]
 

@@ -65,16 +65,7 @@ dependencies {
 
 }
 
-//task download << {
-//  mkdir buildDir
-//  vfs {
-//    cp "zip:https://github.com/hakimel/reveal.js/archive/"+revealjs_version+".zip!reveal.js-"+revealjs_version, revealjsDir, recursive: true, overwrite: true
-//  }
-//
-//  if(!adocRevealjsDir.exists()) {
-//   Grgit.clone(dir: adocRevealjsDir, uri: 'https://github.com/asciidoctor/asciidoctor-reveal.js')
-// }
-//}
+
 
 task download << {
     mkdir downloadDir
@@ -96,25 +87,6 @@ download {
     outputs.dir revealjsDir
     outputs.dir revealjsTemplateDir
 }
-
-//task downloadDists << {
-//    mkdir distFolder
-//
-//    copy {
-//        from "${gradle.gradleUserHomeDir}/wrapper/dists/gradle-${gradle.gradleVersion}-all"
-//        include "**/gradle-${gradle.gradleVersion}-all.zip"
-//        into distFolder
-//
-//        eachFile {
-//            it.relativePath = new RelativePath(true,it.name)
-//        }
-//    }
-//
-//    vfs {
-////        cp  new File(distFolder,'gradle')
-////        cp 'http://groovy.org/....', new File(distFolder,'groovy')
-//    }
-//}
 
 asciidoctor {
   if( !buildDir.exists() ) {
@@ -153,14 +125,6 @@ asciidoctor {
 
 }
 
-//clean {
-//  doLast {
-//      file('examples').
-//  }
-//}
-
-
-
 
 task distZip ( type : Zip ) {
     destinationDir buildDir
@@ -170,7 +134,10 @@ task distZip ( type : Zip ) {
         include 'examples/**'
         include '.repository/**'
         include 'dists/**'
+        exclude 'examples/*/build'
+        exclude 'examples/*/.gradle'
     }
+
     include 'build.gradle'
     include 'gradle'
     include 'gradlew*'
@@ -191,11 +158,4 @@ syncRemoteRepositories {
   configurations 'examples'
 
   includeBuildScriptDependencies = false
-}
-
-
-task foo << {
-
-
-    println distZip.source.files
 }

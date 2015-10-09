@@ -1,15 +1,16 @@
 repositories {
     ivy {
         url '../../.repository'
+        layout 'ivy'
     }
 }
 
+apply plugin : 'java'
 
 dependencies {
     testCompile 'junit:junit:4.1'
 }
 
-apply plugin : 'java'
 
 
 

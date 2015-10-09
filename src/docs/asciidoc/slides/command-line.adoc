@@ -1,0 +1,9 @@
+== Gradle Command-line
+
+[source]
+----
+gradle -v
+gradle -h
+gradle tasks
+gradle tasks --info
+----
