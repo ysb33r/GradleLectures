@@ -1,0 +1,4 @@
+// Add one or more tasks of your own in here
+// RUn gradle / gradlew tasks --info to display them
+// Add descriptions to you tasks
+// Try adding an Exec and a Copy task

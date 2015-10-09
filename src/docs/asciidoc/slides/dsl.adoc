@@ -1,0 +1,154 @@
+== Gradle DSL
+
+* Underlying language is Groovy
+* You don't need to be a Groovy expert to be a Gradle power user
+* Groovy doesn't need `;` in most cases
+* Groovy does more with less punctuation, making it an ideal choice for a DSL
+* In most cases lines that do not end on an operator is considered a completed statement.
+
+== Gradle Tasks
+
+* Can be based upon a task type
+
+[source,groovy]
+----
+include::{snippets}/task1.gradle[]
+----
+
+* Can be free-form
+
+[source,groovy]
+----
+include::{snippets}/task2.gradle[indent=0]
+----
+
+== Gradle Tasks : Configuration vs Action
+
+* Use of `<< {}` adds action to be executed
+** Tasks supplied by plugin will have default actions
+
+* Use of `{}` configures a task
+
+== Gradle Tasks Exercise
+
+* *Workdir*: `examples/free-form-tasks`
+* Open `build.gradle`
+* Add some free-form tasks of your own
+* Use `../../gradlew tasks` and `../../gradlew tasks --info`
+** Add `description` to each tasks and run `tasks` again.
+* Run your tasks
+* Add an `Exec` and a `Copy` task.
+
+== Closure Delegation in Groovy
+
+* When a symbol cannot be resolved within a closure, Groovy will look elsewhere
+** In groovy speak this is acllaed a *Delegate*.
+* In most cases in Gradle the delegation will be entity the closure is passed to.
+** WIll also look at the `Project` and `ext` objects.
+
+[source,groovy]
+----
+task runSomething(type : Exec ) { cmdline 'git' }
+----
+
+is roughly the equivalent of
+
+[source,groovy]
+----
+ExecTask runSomething = new ExecTask()
+runSomething.cmdline( 'git' )
+----
+
+== More Closure Magic
+
+* If a Groovy class has a method of this signature
+
+[source,groovy]
+----
+class Foo {
+  def call( Closure c) { /* ... */ }
+}
+----
+
+* Then that object can be called directly with a closure
+
+[source,groovy]
+----
+Foo foo = new Foo()
+foo {
+  println 'Hello, world'
+}
+----
+
+* This avoiding ugly syntax
+
+[source,groovy]
+----
+foo.call({ println 'Hello, world' })
+----
+
+== Maps in Groovy
+
+* Hashmaps in Groovy is simple to use
+
+[source,groovy]
+----
+def myMap = [ plugin : 'java' ]
+----
+
+* Maps are easy to pass inline to functions
+
+[source,groovy]
+----
+project.apply( plugin : 'java' )
+----
+
+* Which in Gradle can become
+
+[source,groovy]
+----
+apply plugin : 'java'
+----
+
+== Lists in Groovy
+
+* Lists in Groovy is simple too
+
+[source,groovy]
+----
+def myList = [ 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop' ]
+----
+
+* This makes it possible for Gradle to do
+
+[source,groovy]
+----
+args 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop'
+----
+
+== Groovy Exercise
+
+* Unpack the ZIP in `.repository/dists/groovy` to some location
+* Run `bin/GroovyConsole` and try some of the examples on screen
+
+== Buildscript
+
+* The `buildscript` closure is special
+* It tells Gradle what to load into the classpath before evaluating the script itself.
+* It also tells it where to look for those dependencies.
+* Even though Gradle 2.1 has added a new way of adding external plugins, `buildscript` are
+  much more flexible.
+
+== Extensions
+
+* Extensions are global configuration blocks added by plugins.
+* Example: The `jruby-gradle-base` plugin will add a `jruby` block.
+
+[source,groovy]
+----
+apply plugin: 'com.github.jruby-gradle.base'
+
+jruby {
+  defaultVersion = '1.7.11'
+}
+----

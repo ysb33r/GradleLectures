@@ -1,0 +1,5 @@
+task runSomething ( type : Exec ) {
+    command 'git'
+    args 'clone', 'https://bitbucket.com/ysb33r/GradleWorkshop'
+}
+

@@ -1,0 +1,5 @@
+== First Things First
+
+* Gradle will not run if `java` or `JAVA_HOME` cannot be found.
+* JDK6 as a minimum, but JDK7+ is better.
+* You don't have to be a user of any of the languages on display today.

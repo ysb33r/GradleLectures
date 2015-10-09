@@ -1,0 +1,53 @@
+== First project
+
+* *Workdir*: `examples/jvm-java-first`
+* Open `build.gradle`
+
+[source,groovy]
+----
+include::{snippets}/java.gradle[]
+----
+
+* Convention over configuration
+* Intelligence provided by plugin
+
+[source]
+----
+src -- main -- java
+----
+
+== Add some testing
+
+* *Workdir*: `examples/jvm-java`
+* Open `build.gradle`
+
+[source,groovy]
+----
+include::{snippets}/java2.gradle[]
+----
+
+Your example will contain
+
+[source,groovy]
+----
+include::{sourcedir}/jvm-java/build.gradle[]
+----
+
+== Gradle Dependency Management
+
+* Easy to use
+* Flexible to configure for exceptions
+* Uses `dependencies` closure
+* First word on line is usually name of a configuration.
+** Configurations are usually supplied by plugins.
+* Dependencies are downloaded from repositories
+* Maven coordinates are used as format
+
+== Gradle Repositories
+
+* Specified within a `repositories` closure
+* Processed in listed order to look for dependencies
+* 'jcenter()` preferred open-source repo.
+* `mavenLocal()`, `mavenCentral()`, `maven {}`
+* Ivy repositories via `ivy {}`
+* Flat-directory repositories via `flatDir`

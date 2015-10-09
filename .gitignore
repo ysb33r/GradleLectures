@@ -12,3 +12,5 @@ gradle-app.setting
 
 *.iml
 .idea
+.repository
+dists
