@@ -19,17 +19,19 @@ src -- main -- java
 * *Workdir*: `examples/jvm-java`
 * Open `build.gradle`
 
+[cols="2*"]
+|===
+a|
 [source,groovy]
 ----
 include::{snippets}/java2.gradle[]
 ----
-
-Your example will contain
-
+a|
 [source,groovy]
 ----
 include::{sourcedir}/jvm-java/build.gradle[]
 ----
+|===
 
 == Gradle Dependency Management
 

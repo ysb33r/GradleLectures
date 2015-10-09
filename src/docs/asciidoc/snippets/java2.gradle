@@ -2,11 +2,12 @@ repositories {
     jcenter()
 }
 
+apply plugin : 'java'
+
 dependencies {
     testCompile 'junit:junit:4.1'
 }
 
-apply plugin : 'java'
 
 
 
