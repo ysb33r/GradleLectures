@@ -1,0 +1,7 @@
+== Challenge: Building an Application
+
+* *Workdir*: `examples/ftpserver`
+* Modify project to build a standalone application
+* *Hint*: `Use `application` plugin
+
+

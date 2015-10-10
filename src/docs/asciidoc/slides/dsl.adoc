@@ -128,8 +128,8 @@ args 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop'
 
 == Groovy Exercise
 
-* Unpack the ZIP in `.repository/dists/groovy` to some location
-* Run `bin/GroovyConsole` and try some of the examples on screen
+* Run `$GROOVY/bin/GroovyConsole` and try some of the examples on screen
+* `$GROOVY` is the directory where Groovy was unpacked to.
 
 == Buildscript
 

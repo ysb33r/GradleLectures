@@ -1,0 +1,27 @@
+repositories {
+    ivy {
+        url '../../.repository'
+        layout 'ivy'
+    }
+}
+
+
+apply plugin : 'groovy'
+
+version = 1.0
+
+dependencies {
+//    compile 'org.codehaus.groovy:groovy-all:2.3.10'
+    compile localGroovy()
+    compile 'org.apache.ftpserver:ftpserver-core:1.0.6'
+    compile 'commons-io:commons-io:2.4'
+    compile 'commons-net:commons-net:3.+'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'org.slf4j:slf4j-simple:1.7.12'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'ATA Gradle Workshop', 'Implementation-Version': version
+    }
+}

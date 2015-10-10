@@ -1,0 +1,58 @@
+// https://github.com/samueltbrown/gradle-cucumber-plugin
+
+
+buildscript {
+    repositories {
+        ivy {
+            url '../../.repository'
+            layout 'ivy'
+        }
+    }
+
+    dependencies {
+        classpath 'com.github.samueltbrown:gradle-cucumber-plugin:0.9'
+    }
+}
+
+repositories {
+    ivy {
+        url '../../.repository'
+        layout 'ivy'
+    }
+}
+
+apply plugin : 'groovy'
+apply plugin : 'com.github.samueltbrown.cucumber'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    cucumberCompile 'org.codehaus.groovy:groovy-all:2.3.6'
+    cucumberCompile 'info.cukes:cucumber-groovy:1.2.2'
+}
+
+/*
+cucumber {
+    formats = ['pretty','json:build/cucumber.json','junit:build/cucumber.xml']
+    glueDirs = ['src/test/resources/env',
+                'src/test/resources/support',
+                'src/test/resources/step_definitions']
+    featureDirs = ['src/test/resources/features']
+    tags = ['@billing', '@important']
+    monochrome = false
+    strict = false
+    dryRun = false
+    ignoreFailures = false
+
+    jvmOptions {
+      maxHeapSize = '512m'
+      environment 'ENV', 'staging'
+    }
+}
+ */

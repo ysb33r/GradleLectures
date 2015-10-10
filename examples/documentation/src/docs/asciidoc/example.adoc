@@ -1,0 +1,24 @@
+= Gradle Workshop
+:revision: 1.0
+
+== What is Gradle?
+
+Gradle is a next-generation build & deploy pipeline tool
+
+== Example Gradle Script
+
+[source,groovy]
+----
+repositories {
+    ivy {
+        url '../../.repository'
+        layout 'ivy'
+    }
+}
+
+apply plugin : 'java'
+
+dependencies {
+    testCompile 'junit:junit:4.1'
+}
+----

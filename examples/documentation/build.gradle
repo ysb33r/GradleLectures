@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        ivy {
+            url '../../.repository'
+            layout 'ivy'
+        }
+    }
+
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+    }
+}
+
+repositories {
+    ivy {
+        url '../../.repository'
+        layout 'ivy'
+    }
+}
+
+apply plugin: 'org.asciidoctor.convert'
+
+asciidoctor {
+    sources {
+        include 'example.adoc'
+    }
+
+    backends 'html5'
+
+}

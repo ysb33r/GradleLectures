@@ -44,17 +44,18 @@ include::slides/first-things.adoc[]
 
 include::slides/first-project.adoc[]
 
-////
-include::slides/groovy-project.adoc[]
-////
-
 include::slides/dsl.adoc[]
 
+
+////
 == Using Testing Frameworks
 
 * Spock
-* Selenium
+* _Selenium_
 * Cucumber
+////
+
+include::slides/ftpserver.adoc
 
 == Open Workshop
 
