@@ -47,6 +47,16 @@ include::slides/first-project.adoc[]
 include::slides/dsl.adoc[]
 
 
+== Publishing
+
+* Publishes to Maven & Ivy repositories
+* Many ways to publish to online services
+
+== Exercise
+
+* Take the `examples/jvm-java` example and publish to local Maven Repository
+* Hint: `apply plugin 'maven'`
+
 ////
 == Using Testing Frameworks
 
@@ -55,7 +65,7 @@ include::slides/dsl.adoc[]
 * Cucumber
 ////
 
-include::slides/ftpserver.adoc
+include::slides/ftpserver.adoc[]
 
 == Open Workshop
 
