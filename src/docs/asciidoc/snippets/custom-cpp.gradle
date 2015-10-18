@@ -1,0 +1,26 @@
+// tag::cpp_source[]
+sources {
+    cpp {
+        source {
+            srcDir "myDir"
+            include "**/*.cpp"
+        }
+    }
+}
+// end::cpp_source[]
+
+// tag::cpp_compiler[]
+model {
+    toolChains {
+        gcc(Gcc) {
+            path '/installed/in/foo/dir/gcc'
+
+            eachPlatform {
+                cppCompiler.withArguments { args ->
+                    args << "-DNDEBUG"
+                }
+            }
+        }
+    }
+}
+// end::cpp_compiler[]

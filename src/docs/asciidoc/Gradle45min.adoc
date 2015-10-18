@@ -11,4 +11,54 @@ Schalk Cronjé <ysb33r@gmail.com>
 :revealjs_history: true
 :revealjs_slideNumber : true
 :revealjs_center: true
-coderay-css: stylesheets/asciidoctor-coderay.css
+coderay-css: styles/asciidoctor-coderay.css
+
+== Gradle
+
+[quote]
+--
+Not just for building JVM projects
+--
+
+== Gradle DSL
+
+* Underlying language is Groovy
+* You don't need to be a Groovy expert to be a Gradle power user
+* Groovy doesn't need `;` in most cases
+* Groovy does more with less punctuation, making it an ideal choice for a DSL
+* In most cases lines that do not end on an operator is considered a completed statement.
+
+include::slides/groovy.adoc[]
+
+include::slides/dsl.adoc[]
+
+include::slides/first-project.adoc[]
+
+include::slides/cpp.adoc[]
+
+== Building Ruby
+
+////
+include::{snippets}/jruby.adoc
+////
+
+== Other Languages
+
+* C / ASM / Resources (built-in)
+* Closure (plugin)
+* Frege (plugin)
+* Golang (plugin)
+* Scala (built-in)
+
+== Support for Other Buildsystems
+
+* ANT (built-in)
+* GNU Make
+* MSBuild / xBuild
+* Anything else craftable via `Exec` task
+
+== Building Documentation
+
+* Doxygen
+* Markdown
+* Asciidoctor

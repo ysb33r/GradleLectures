@@ -5,7 +5,7 @@ repositories {
 apply plugin : 'java'
 
 dependencies {
-    testCompile 'junit:junit:4.1'
+    testCompile 'junit:junit:4.1+'
 }
 
 

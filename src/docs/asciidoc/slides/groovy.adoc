@@ -1,0 +1,133 @@
+== Groovy vs Java
+
+In Groovy:
+
+* All class members are public by default
+* No need to create getters/setters for public fields
+* Both static & dynamic typing supported
+* `def` means `Object`
+
+== Calling Methods
+
+[source,groovy]
+----
+class Foo {
+  void bar( def a,def b ) {}
+}
+
+def foo = new Foo()
+
+foo.bar( '123',456 )
+foo.bar '123', 456
+
+foo.with {
+  bar '123', 456
+}
+----
+
+== Calling Methods with Closures
+
+[source,groovy]
+----
+class Foo {
+  void bar( def a,Closure b ) {}
+}
+
+def foo = new Foo()
+
+foo.bar( '123',{ println it } )
+
+foo.bar ('123') {
+  println it
+}
+
+foo.bar '123', {
+  println it
+}
+----
+
+== Maps in Groovy
+
+Hashmaps in Groovy are simple to use
+
+[source,groovy]
+----
+def myMap = [ plugin : 'java' ]
+----
+
+Maps are easy to pass inline to functions
+
+[source,groovy]
+----
+project.apply( plugin : 'java' )
+----
+
+Which in Gradle can become
+
+[source,groovy]
+----
+apply plugin : 'java'
+----
+
+== Lists in Groovy
+
+* Lists in Groovy are simple too
+[source,groovy]
+----
+def myList = [ 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop' ]
+----
+
+* This makes it possible for Gradle to do
+
+[source,groovy]
+----
+args 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop'
+----
+
+
+== Closure Delegation in Groovy
+
+* When a symbol cannot be resolved within a closure, Groovy will look elsewhere
+* In Groovy speak this is called a *Delegate*.
+* This can be programmatically controlled via the `Closure.delegate` property.
+
+== Closure Delegation in Groovy
+
+[source,groovy]
+----
+class Foo {
+  def target
+}
+
+class Bar {
+  Foo foo = new Foo()
+  void doSomething( Closure c ) {
+    c.delegate = foo
+    c()
+  }
+}
+
+Bar bar = new Bar()
+bar.doSomething {
+  target = 10
+}
+----
+
+== More Closure Magic
+
+If a Groovy class has a method 'call(Closure)`, the object can be passed a closure directly.
+
+[source,groovy]
+----
+class Foo {
+  def call( Closure c) { /* ... */ }
+}
+
+Foo foo = new Foo()
+foo {
+  println 'Hello, world'
+}
+
+// This avoids ugly syntax
+foo.call({ println 'Hello, world' })
+----
