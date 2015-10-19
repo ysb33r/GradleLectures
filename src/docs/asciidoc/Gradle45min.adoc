@@ -93,6 +93,7 @@ include::slides/publishing.adoc[]
 ** gradle-asciidoctor-plugin
 ** gradle-vfs-plugin
 * Code snippets tested as part of build
+* Source code: https://github.com/ysb33r/GradleLectures/tree/AccuLondon
 
 == Thank you
 
@@ -102,3 +103,5 @@ include::slides/publishing.adoc[]
 image::images/SchalkPanarama.jpg[]
 
 Keep an eye out for https://leanpub.com/idiomaticgradle
+
+
