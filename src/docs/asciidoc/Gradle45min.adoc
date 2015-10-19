@@ -62,7 +62,7 @@ include::slides/jruby.adoc[]
 * ANT (built-in)
 * GNU Make
 * MSBuild / xBuild
-* Grunt /
+* Grunt
 * Anything else craftable via `Exec` or `JavaExec` task
 
 == Documentation

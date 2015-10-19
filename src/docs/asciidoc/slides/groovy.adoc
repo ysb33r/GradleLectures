@@ -74,14 +74,14 @@ apply plugin : 'java'
 * Lists in Groovy are simple too
 [source,groovy]
 ----
-def myList = [ 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop' ]
+def myList = [ 'clone', ''http://github.com/ysb33r/GradleLectures' ]
 ----
 
 * This makes it possible for Gradle to do
 
 [source,groovy]
 ----
-args 'clone', 'http://bitbucket.com/ysb33r/GradleWorkshop'
+args 'clone', 'http://github.com/ysb33r/GradleLectures'
 ----
 
 

@@ -9,7 +9,7 @@ buildscript {
 
   dependencies {
     classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
-    classpath 'com.github.jruby-gradle:jruby-gradle-plugin:0.1.5'
+    classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.1.4'
     classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta3'
     classpath 'commons-httpclient:commons-httpclient:3.1'
 //    classpath 'org.ysb33r.gradle:ivypot:0.3.4'
@@ -66,11 +66,11 @@ download {
 
 asciidoctor {
   if( !buildDir.exists() ) {
-    dependsOn jrubyPrepareGems
+    dependsOn jrubyPrepare
     dependsOn download
   }
 
-  gemPath = jrubyPrepareGems.outputDir
+  gemPath = jrubyPrepare.outputDir
 //  requires = ['asciidoctor-diagram']
   sources {
     include 'Gradle45min.adoc'
