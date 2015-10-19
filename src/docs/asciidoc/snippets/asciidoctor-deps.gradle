@@ -1,0 +1,5 @@
+// tag::asciidoctor_repo[]
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.2'
+}
+// end::asciidoctor_repo[]

@@ -1,0 +1,16 @@
+== Building JRuby
+
+[source,groovy]
+----
+include::{sourcedir}/jruby/build.gradle[tags=jruby_deps]
+----
+
+
+== Building JRuby
+
+[source,groovy]
+----
+include::{sourcedir}/jruby/build.gradle[tags=jruby_project]
+----
+
+(Example from JRuby-Gradle project)

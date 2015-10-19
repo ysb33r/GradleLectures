@@ -1,0 +1,13 @@
+== Publishing
+
+* Built-in to Maven, Ivy
+* Metadata publishing for native projects still lacking
+* Various plugins for AWS and other cloud storage
+* Plain old copies to FTP, SFTP etc.
+
+== Publishing via VFS
+
+[source,groovy]
+----
+include::{snippets}/vfs.gradle[]
+----

@@ -1,0 +1,34 @@
+// From JRuby-Gradle project
+
+// tag::jruby_deps[]
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.1.4'
+    }
+}
+import com.github.jrubygradle.JRubyExec
+// end::jruby_deps[]
+
+
+// tag::jruby_project[]
+apply plugin: "com.github.jruby-gradle.base"
+
+dependencies {
+    jrubyExec "rubygems:colorize:0.7.7+"
+}
+
+task printSomePrettyOutputPlease(type: JRubyExec) {
+    description "Execute our nice local print-script.rb"
+    script "${projectDir}/print-script.rb"
+}
+// end::jruby_project[]
+
+task build {
+    finalizedBy printSomePrettyOutputPlease
+}
+

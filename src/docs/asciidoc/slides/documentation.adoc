@@ -1,0 +1,29 @@
+== Building Documentation
+
+* Doxygen
+* Markdown
+* Asciidoctor
+
+== Asciidoctor
+
+== Building with Asciidoctor
+
+[source,groovy]
+----
+include::{snippets}/asciidoctor-deps.gradle[tags=asciidoctor_repo]
+----
+
+== Building with Asciidoctor
+
+[source,groovy]
+----
+include::{sourcedir}/asciidoctor/build.gradle[tags=asciidoctor_project]
+----
+
+== Building with Doxygen
+
+[source,groovy]
+----
+include::{snippets}/doxygen.gradle[]
+----
+

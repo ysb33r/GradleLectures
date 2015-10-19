@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Ignore;
 
-class ExampleTest {
+public class ExampleTest {
     @Test
     public void thisOneWillPass() {
 
@@ -20,7 +20,7 @@ class ExampleTest {
 
     @Test
     public void thisOneWillFail() {
-        assertTrue (false);
+        assertTrue (true);
     }
 }
 

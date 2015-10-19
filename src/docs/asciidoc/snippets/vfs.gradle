@@ -1,0 +1,12 @@
+plugins {
+    id "org.ysb33r.vfs" version "1.0-beta3"
+}
+
+task publishToWebserver {
+
+  vfs {
+    cp "${buildDir}/website",
+        "ftp://${username}:${password}@int.someserver.com/var/www",
+        recursive : true, overwrite : true
+  }
+}

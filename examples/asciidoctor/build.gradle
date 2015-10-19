@@ -1,0 +1,18 @@
+apply plugin : 'org.asciidoctor.convert'
+
+// tag::asciidoctor_project[]
+repositories {
+    jcenter()
+}
+
+asciidoctor {
+    sources {
+        include 'example.adoc'
+    }
+
+    backends 'html5'
+
+}
+// end::asciidoctor_project[]
+
+task build { finalizedBy asciidoctor }

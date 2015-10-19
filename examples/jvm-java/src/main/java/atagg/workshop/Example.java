@@ -1,4 +1,4 @@
-class Example {
+public class Example {
     public void setName(final String nm) {
         name = nm;
     }

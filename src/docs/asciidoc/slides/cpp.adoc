@@ -85,11 +85,12 @@ include::{snippets}/custom-cpp.gradle[tags=cpp_source]
 
 * Cross compilation
 * Multi-architecture targets
-
+* Set compiler & linker flags
+* Multi-variant builds
 
 == Building C++ - Weakness
 
-* Currently only support CTest
+* Currently only have built-in support for CUnit
 * Only platform configuration tool support is `CMake`
 * No Autotools equivalent
 * DSL can be slicker
