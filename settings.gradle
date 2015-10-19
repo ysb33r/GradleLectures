@@ -1,3 +1,4 @@
 include 'examples/cplusplus'
+include 'examples/jvm-java'
 include 'examples/jruby'
 include 'examples/asciidoctor'

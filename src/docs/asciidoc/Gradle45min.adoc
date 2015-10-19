@@ -104,4 +104,40 @@ image::images/SchalkPanarama.jpg[]
 
 Keep an eye out for https://leanpub.com/idiomaticgradle
 
+== Migrations
+
+== Ant to Gradle
+
+Reflect Ant Build into Gradle
+
+[source,groovy]
+----
+ant.importBuild('build.xml')
+----
+
+== Maven to Gradle
+
+Go to directory where `pom.xml` is and type
+
+[source,bash]
+----
+gradle init
+----
+
+== GnuMake to Gradle
+
+Call current Makefile from Gradle
+
+[source,groovy]
+----
+plugins {
+  id "org.ysb33r.gnumake" version "1.0.2"
+}
+import org.ysb33r.gradle.gnumake.GnuMakeBuild
+
+task runMake (type:GnuMakeBuild) {
+  targets 'build','install'
+  flags  DESTDIR : '/copy/files/here', BUILD_NUMBER : '12345'
+}
+----
 
