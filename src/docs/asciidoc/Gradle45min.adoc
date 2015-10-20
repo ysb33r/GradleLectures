@@ -121,7 +121,7 @@ Go to directory where `pom.xml` is and type
 
 [source,bash]
 ----
-gradle init
+gradle init --type pom
 ----
 
 == GnuMake to Gradle
