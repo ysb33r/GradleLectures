@@ -1,27 +1,23 @@
 buildscript {
   repositories {
     jcenter()
-
-    maven {
-          url "https://plugins.gradle.org/m2/"
-    }
   }
 
   dependencies {
-    classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
-    classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.1.4'
     classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta3'
     classpath 'commons-httpclient:commons-httpclient:3.1'
-//    classpath 'org.ysb33r.gradle:ivypot:0.3.4'
    }
 }
 
-apply plugin: 'com.github.jruby-gradle.base'
-apply plugin: 'org.ysb33r.vfs'
-apply plugin: 'org.asciidoctor.convert'
-//apply plugin: 'org.ysb33r.ivypot'
+plugins {
+    id 'com.github.jruby-gradle.base' version '1.1.4'
+    id 'org.ysb33r.vfs' version '1.0-beta6'
+    id 'org.asciidoctor.convert' version '1.5.3'
+    id 'org.ysb33r.ivypot' version '0.3.7'
 
-version = '1.0.0'
+}
+
+version = '1.0-MkJugMar2016'
 
 ext {
 
@@ -31,16 +27,30 @@ ext {
     revealjsDir = new File(downloadDir,'reveal.js')
     revealjsTemplateDir = new File(downloadDir,'revealjs-backends/revealjs')
 
-//    repositoryFolder = file('.repository')
-//    distFolder = file('.repository/dists')
-//
-//    slf4jVersion = '1.7.12'
-
+    repositoryFolder = file('.repository')
+    distFolder = file('.repository/dists')
 }
 
 repositories {
-  jcenter()
+    jcenter()
 }
+
+configurations {
+    examples
+    zinc
+}
+
+
+dependencies {
+    examples 'junit:junit:4.1'
+    examples 'org.scala-lang:scala-library:2.11.8'
+    examples 'org.scala-lang:scala-compiler:2.11.8'
+    examples 'org.codehaus.groovy:groovy-all:2.4.3'
+    examples 'org.spockframework:spock-core:1.0-groovy-2.4'
+//    examples 'com.typesafe.sbt:compiler-interface:0.13.7'
+    zinc "com.typesafe.zinc:zinc:${org.gradle.language.scala.internal.toolchain.DefaultScalaToolProvider.DEFAULT_ZINC_VERSION}"
+}
+
 
 
 task download << {
@@ -54,9 +64,7 @@ task download << {
             cp "zip:https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${revealjsTemplateVersion}.zip!asciidoctor-reveal.js-${revealjsTemplateVersion}/templates/slim",
                 revealjsTemplateDir, recursive: true, overwrite: true
         }
-
     }
-
 }
 
 download {
@@ -65,73 +73,68 @@ download {
 }
 
 asciidoctor {
-  if( !buildDir.exists() ) {
-    dependsOn jrubyPrepare
-    dependsOn download
-  }
+    if (!buildDir.exists()) {
+        dependsOn jrubyPrepare
+        dependsOn download
+    }
 
-  gemPath = jrubyPrepare.outputDir
+    gemPath = jrubyPrepare.outputDir
 //  requires = ['asciidoctor-diagram']
-  sources {
-    include 'Gradle45min.adoc'
-  }
-
-  resources {
-    from(sourceDir) {
-      include 'images/**'
-      include 'styles/**'
-      include 'snippets/**'
+    sources {
+        include 'Gradle45min.adoc'
     }
 
-    from(downloadDir) {
-      include 'reveal.js/**'
-      include 'asciidoctor-reveal.js/**'
-    }
-  }
+    resources {
+        from(sourceDir) {
+            include 'images/**'
+            include 'styles/**'
+            include 'snippets/**'
+        }
 
-   attributes 'sourcedir' : file('examples'),
-              imagesoutdir : 'images',
-              'source-highlighter' : 'coderay',
-              gradlever : gradle.gradleVersion
+        from(downloadDir) {
+            include 'reveal.js/**'
+            include 'asciidoctor-reveal.js/**'
+        }
+    }
+
+    attributes 'sourcedir': file('examples'),
+        imagesoutdir: 'images',
+        'source-highlighter': 'coderay',
+        gradlever: gradle.gradleVersion
 
     backends 'revealjs'
 
-    options template_dirs : [ revealjsTemplateDir.parentFile.absolutePath ]
-
-
+    options template_dirs: [revealjsTemplateDir.parentFile.absolutePath]
 }
 
+syncRemoteRepositories {
 
-//task distZip ( type : Zip ) {
-//    destinationDir buildDir
-//    archiveName 'GradleWorkshop.zip'
-//    from projectDir, {
-//        include 'src/**'
-//        include 'examples/**'
-//        include '.repository/**'
-//        include 'dists/**'
-//        exclude 'examples/*/build'
-//        exclude 'examples/*/.gradle'
-//    }
-//
-//    include 'build.gradle'
-//    include 'gradle'
-//    include 'gradlew*'
-//    include 'README.adoc'
-//}
+    inputs.properties 'foo' : configurations.examples
 
-//syncRemoteRepositories {
-//  repoRoot repositoryFolder
-//
-//  repositories {
-//    jcenter()
-//    mavenCentral()
-//    maven {
-//      url "https://plugins.gradle.org/m2/"
-//    }
-//  }
-//
-//  configurations 'examples'
-//
-//  includeBuildScriptDependencies = false
-//}
+    repoRoot repositoryFolder
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    configurations 'examples','zinc'
+
+    includeBuildScriptDependencies = false
+
+    repoArtifactPattern = '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
+}
+
+build.dependsOn asciidoctor
+
+[ 'jvm-scala','jvm-groovy' ].each { projName ->
+    String taskName = "example-${projName}"
+    tasks.create( taskName,GradleBuild) {
+        dir = file("examples/${projName}")
+        buildFile = "${dir}/build.gradle"
+        tasks = ['build']
+//        startParameter = gradle.startParameter.newBuild()
+    }
+    build.dependsOn taskName
+}
+

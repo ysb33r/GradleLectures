@@ -1,3 +1,5 @@
+package gradle.workshop;
+
 public class Example {
     public void setName(final String nm) {
         name = nm;

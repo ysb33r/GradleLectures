@@ -1,0 +1,17 @@
+
+apply from: '../../gradle/example-repo.gradle'
+
+// tag::example[]
+apply plugin : 'groovy'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+
+    testCompile ('org.spockframework:spock-core:1.0-groovy-2.4') {
+        exclude module : 'groovy-all'
+    }
+}
+// end::example[]
+
+
+

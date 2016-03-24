@@ -1,26 +1,19 @@
 
-== Java Project
+== Most Trivial Java Project
+
+[source,groovy]
+----
+apply plugin: 'java'
+----
+
+Will look for sources under `src/main/java`
+
+include::slides/first-project.adoc[]
+
+=== Java Project
 
 [source,groovy]
 ----
 include::{snippets}/java2.gradle[]
 ----
 
-== Gradle Dependency Management
-
-* Easy to use
-* Flexible to configure for exceptions
-* Uses `dependencies` closure
-* First word on line is usually name of a configuration.
-** Configurations are usually supplied by plugins.
-* Dependencies are downloaded from repositories
-* Maven coordinates are used as format
-
-== Gradle Repositories
-
-* Specified within a `repositories` closure
-* Processed in listed order to look for dependencies
-* `jcenter()` preferred open-source repo.
-* `mavenLocal()`, `mavenCentral()`, `maven {}`
-* Ivy repositories via `ivy {}`
-* Flat-directory repositories via `flatDir`

@@ -1,0 +1,26 @@
+== Gradle Dependency Management
+
+* Easy to use
+* Flexible to configure for exceptions
+* Uses `dependencies` closure
+* First word on line is usually name of a configuration.
+** Configurations are usually supplied by plugins.
+* Dependencies are downloaded from repositories
+* Maven coordinates are used as format
+
+=== Gradle Repositories
+
+* Specified within a `repositories` closure
+* Processed in listed order to look for dependencies
+* `jcenter()` preferred open-source repo.
+* `mavenLocal()`, `mavenCentral()`, `maven {}`
+* Ivy repositories via `ivy {}`
+* Flat-directory repositories via `flatDir`
+
+== Gradle DSL
+
+* Underlying language is Groovy
+* You don't need to be a Groovy expert to be a Gradle power user
+* Groovy doesn't need `;` in most cases
+* Groovy does more with less punctuation, making it an ideal choice for a DSL
+* In most cases lines that do not end on an operator is considered a completed statement.

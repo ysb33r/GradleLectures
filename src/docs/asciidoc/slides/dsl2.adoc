@@ -1,21 +1,3 @@
-== Closure Delegation in Gradle
-
-* In most cases the delegation will be entity the closure is passed to.
-* Will also look at the `Project` and `ext` objects.
-* The `Closure.delegate` property allows plugin writers ability to create beautiful DSLs
-
-[source,groovy]
-----
-task runSomething(type : Exec ) { cmdline 'git' }
-----
-
-is roughly the equivalent of
-
-[source,groovy]
-----
-ExecTask runSomething = new ExecTask()
-runSomething.cmdline( 'git' )
-----
 
 == Gradle Tasks
 

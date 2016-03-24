@@ -7,7 +7,7 @@ In Groovy:
 * Both static & dynamic typing supported
 * `def` means `Object`
 
-== Calling Methods
+=== Calling Methods
 
 [source,groovy]
 ----
@@ -25,7 +25,7 @@ foo.with {
 }
 ----
 
-== Calling Methods with Closures
+=== Calling Methods with Closures
 
 [source,groovy]
 ----
@@ -46,7 +46,7 @@ foo.bar '123', {
 }
 ----
 
-== Maps in Groovy
+=== Maps in Groovy
 
 Hashmaps in Groovy are simple to use
 
@@ -69,7 +69,7 @@ Which in Gradle can become
 apply plugin : 'java'
 ----
 
-== Lists in Groovy
+=== Lists in Groovy
 
 * Lists in Groovy are simple too
 [source,groovy]
@@ -84,14 +84,13 @@ def myList = [ 'clone', ''http://github.com/ysb33r/GradleLectures' ]
 args 'clone', 'http://github.com/ysb33r/GradleLectures'
 ----
 
-
-== Closure Delegation in Groovy
+=== Closure Delegation in Groovy
 
 * When a symbol cannot be resolved within a closure, Groovy will look elsewhere
 * In Groovy speak this is called a *Delegate*.
 * This can be programmatically controlled via the `Closure.delegate` property.
 
-== Closure Delegation in Groovy
+=== Closure Delegation in Groovy
 
 [source,groovy]
 ----
@@ -113,7 +112,7 @@ bar.doSomething {
 }
 ----
 
-== More Closure Magic
+=== More Closure Magic
 
 If a Groovy class has a method 'call(Closure)`, the object can be passed a closure directly.
 
@@ -130,4 +129,23 @@ foo {
 
 // This avoids ugly syntax
 foo.call({ println 'Hello, world' })
+----
+
+=== Closure Delegation in Gradle
+
+* In most cases the delegation will be entity the closure is passed to.
+* Will also look at the `Project` and `ext` objects.
+* The `Closure.delegate` property allows plugin writers ability to create beautiful DSLs
+
+[source,groovy]
+----
+task runSomething(type : Exec ) { cmdline 'git' }
+----
+
+is roughly the equivalent of
+
+[source,groovy]
+----
+ExecTask runSomething = new ExecTask()
+runSomething.cmdline( 'git' )
 ----

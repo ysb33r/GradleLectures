@@ -1,4 +1,4 @@
-package atagg.workshop;
+package gradle.workshop;
 
 import static org.junit.Assert.*;
 

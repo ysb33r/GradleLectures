@@ -1,0 +1,32 @@
+apply from: '../../gradle/example-repo.gradle'
+
+// This is in here as Scala bootstrapping does not work correctly off a local repo
+// I still don't know why. Need to raise a discussion on Gradle Forum
+repositories {
+    jcenter()
+}
+
+// tag::example[]
+apply plugin : 'scala'
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.8'
+}
+// end::example[]
+
+
+ext {
+    bar = configurations.detachedConfiguration(
+        dependencies.create(
+            "com.typesafe.zinc:zinc:${org.gradle.language.scala.internal.toolchain.DefaultScalaToolProvider.DEFAULT_ZINC_VERSION}"
+        )
+    )
+}
+
+task foo << {
+    println bar.files
+}
+
+
+
+

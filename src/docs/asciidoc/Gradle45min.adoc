@@ -1,4 +1,4 @@
-= Gradle in a Polyglot World
+= Introduction to Gradle
 Schalk Cronjé <ysb33r@gmail.com>
 :snippets: ../snippets
 :sourcedir: ../../../examples
@@ -21,28 +21,32 @@ image::images/SchalkPanarama.jpg[]
 
 Gradle plugins authored/contributed to: VFS, Asciidoctor, JRuby family (base, jar, war etc.), GnuMake, Doxygen
 
+== Get Your Daily Gradle Dose
+
+image::images/gradle-logo-pink.png[height="250",width="250"]
+
+@DailyGradle
+
+#gradleTip
+
 == Gradle
 
 [quote]
 --
-Not just for building JVM projects
+A next generation build-and-deploy pipeline tool
 --
-
-== Gradle DSL
-
-* Underlying language is Groovy
-* You don't need to be a Groovy expert to be a Gradle power user
-* Groovy doesn't need `;` in most cases
-* Groovy does more with less punctuation, making it an ideal choice for a DSL
-* In most cases lines that do not end on an operator is considered a completed statement.
-
-include::slides/groovy.adoc[]
-
-include::slides/dsl.adoc[]
 
 include::slides/first-project.adoc[]
 
-include::slides/cpp.adoc[]
+include::slides/dsl1.adoc[]
+
+include::slides/groovy.adoc[]
+
+include::slides/dsl2.adoc[]
+
+== Building Groovy & Scala
+
+* Both languages have built-in support
 
 == Building Ruby
 
@@ -50,12 +54,12 @@ include::slides/jruby.adoc[]
 
 == Other Languages
 
-* C / ASM / Resources (built-in)
+* C++ / C / ASM / Resources (built-in)
 * Clojure (plugin)
 * Frege (plugin)
 * Golang (plugin)
-* Scala (built-in)
 * Gosu (plugin)
+* Mirah (plugin in progress)
 
 == Support for Other Buildsystems
 
@@ -124,20 +128,4 @@ Go to directory where `pom.xml` is and type
 gradle init --type pom
 ----
 
-== GnuMake to Gradle
-
-Call current Makefile from Gradle
-
-[source,groovy]
-----
-plugins {
-  id "org.ysb33r.gnumake" version "1.0.2"
-}
-import org.ysb33r.gradle.gnumake.GnuMakeBuild
-
-task runMake (type:GnuMakeBuild) {
-  targets 'build','install'
-  flags  DESTDIR : '/copy/files/here', BUILD_NUMBER : '12345'
-}
-----
 
