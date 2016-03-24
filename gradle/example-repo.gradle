@@ -2,9 +2,10 @@ buildscript {
     repositories {
         ivy {
             url '../../.repository'
-            layout 'pattern', {
-                artifact '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
-            }
+            layout 'gradle'
+//            layout 'pattern', {
+//                artifact '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
+//            }
         }
     }
 }
@@ -12,8 +13,9 @@ buildscript {
 repositories {
     ivy {
         url '../../.repository'
-        layout 'pattern', {
-            artifact '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
-        }
+        layout 'gradle'
+//            layout 'pattern', {
+//                artifact '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
+//            }
     }
 }
