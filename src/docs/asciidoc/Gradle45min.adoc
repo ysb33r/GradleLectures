@@ -1,4 +1,4 @@
-= Introduction to Gradle
+= Gradle in 45min
 Schalk Cronjé <ysb33r@gmail.com>
 :snippets: ../snippets
 :sourcedir: ../../../examples
@@ -40,15 +40,21 @@ include::slides/first-project.adoc[]
 
 include::slides/dsl1.adoc[]
 
-include::slides/groovy.adoc[]
+include::slides/groovy-intro.adoc[]
+
+include::slides/tasks.adoc[]
 
 include::slides/dsl2.adoc[]
 
-== Building Groovy & Scala
+include::slides/command-line.adoc[]
 
-* Both languages have built-in support
+== Support for other JVM Languages
 
-== Building Ruby
+include::slides/groovy.adoc[]
+
+include::slides/scala.adoc[]
+
+include::slides/kotlin.adoc[]
 
 include::slides/jruby.adoc[]
 
@@ -66,10 +72,8 @@ include::slides/jruby.adoc[]
 * ANT (built-in)
 * GNU Make
 * MSBuild / xBuild
-* Grunt
+* Grunt, Gulp
 * Anything else craftable via `Exec` or `JavaExec` task
-
-== Documentation
 
 include::slides/documentation.adoc[]
 
@@ -97,7 +101,7 @@ include::slides/publishing.adoc[]
 ** gradle-asciidoctor-plugin
 ** gradle-vfs-plugin
 * Code snippets tested as part of build
-* Source code: https://github.com/ysb33r/GradleLectures/tree/AccuLondon
+* Source code: https://github.com/ysb33r/GradleLectures/tree/MkJugMar2016
 
 == Thank you
 
@@ -128,4 +132,10 @@ Go to directory where `pom.xml` is and type
 gradle init --type pom
 ----
 
+== Publishing via VFS
+
+[source,groovy]
+----
+include::{snippets}/vfs.gradle[]
+----
 

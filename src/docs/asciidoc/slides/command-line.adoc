@@ -7,3 +7,43 @@ gradle -h
 gradle tasks
 gradle tasks --info
 ----
+
+=== Gradle Wrapper
+
+Use wrapper where possible:
+
+* Eliminates need to install Gradle in order to build project
+* Leads to more reproducible builds
+
+[source]
+----
+gradle wrapper --wrapper-version 2.12
+----
+
+[source]
+----
+./gradlew tasks
+----
+
+=== Executing tasks
+
+[source]
+----
+./gradlew <taskName1> <taskName2> ...
+----
+
+[source]
+----
+./gradlew build
+----
+
+=== Dependencies
+
+Examine dependencies involved with various configurations
+
+[source]
+----
+./gradlew dependencies
+----
+
+image::images/dependencies.png[]

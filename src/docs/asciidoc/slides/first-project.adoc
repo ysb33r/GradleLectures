@@ -8,12 +8,14 @@ apply plugin: 'java'
 
 Will look for sources under `src/main/java`
 
-include::slides/first-project.adoc[]
-
 === Java Project
 
 [source,groovy]
 ----
-include::{snippets}/java2.gradle[]
+repositories {
+  jcenter()
+}
+
+include::{sourcedir}/jvm-java/build.gradle[tags=example]
 ----
 

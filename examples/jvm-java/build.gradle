@@ -1,9 +1,4 @@
-repositories {
-    ivy {
-        url '../../.repository'
-        layout 'ivy'
-    }
-}
+apply from: '../../gradle/example-repo.gradle'
 
 // tag::example[]
 apply plugin : 'java'

@@ -1,0 +1,10 @@
+=== Building Kotlin
+
+[source,groovy]
+----
+plugins {
+  id "com.zoltu.kotlin" version "1.0.1"
+}
+
+include::{sourcedir}/jvm-kotlin/build.gradle[tags=example]
+----

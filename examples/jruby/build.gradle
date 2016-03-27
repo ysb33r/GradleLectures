@@ -1,34 +1,45 @@
-// From JRuby-Gradle project
-
-// tag::jruby_deps[]
 buildscript {
     repositories {
-        jcenter()
-        maven { url "https://plugins.gradle.org/m2/" }
+        ivy {
+            url '../../.repository'
+            layout 'gradle'
+        }
     }
 
     dependencies {
-        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.1.4'
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.2.1'
     }
 }
+
+
+apply from: '../../gradle/example-repo.gradle'
+
+
+// tag::example[]
 import com.github.jrubygradle.JRubyExec
-// end::jruby_deps[]
 
+// end::example[]
 
-// tag::jruby_project[]
 apply plugin: "com.github.jruby-gradle.base"
 
+// This is a workaround. We currently cannot run this offline, due to a number of issues
+// 1. ivypot plugin cannot from maven repoS that redirect.
+// 2. jruby-gradle plugin does not expose servlet in a way that is easily re-usable in ivypot.
+jruby {
+    defaultRepositories = true
+}
+
+// tag::example[]
 dependencies {
-    jrubyExec "rubygems:colorize:0.7.7+"
+    jrubyExec "rubygems:colorize:0.7.7"
 }
 
 task printSomePrettyOutputPlease(type: JRubyExec) {
     description "Execute our nice local print-script.rb"
     script "${projectDir}/print-script.rb"
 }
-// end::jruby_project[]
+// end::example[]
 
 task build {
     finalizedBy printSomePrettyOutputPlease
 }
-

@@ -1,16 +1,12 @@
-== Building JRuby
+=== Running JRuby
 
 [source,groovy]
 ----
-include::{sourcedir}/jruby/build.gradle[tags=jruby_deps]
-----
+plugins {
+  id 'com.github.jruby-gradle.base' version '1.2.1'
+}
 
-
-== Building JRuby
-
-[source,groovy]
-----
-include::{sourcedir}/jruby/build.gradle[tags=jruby_project]
+include::{sourcedir}/jruby/build.gradle[tags=example]
 ----
 
 (Example from JRuby-Gradle project)

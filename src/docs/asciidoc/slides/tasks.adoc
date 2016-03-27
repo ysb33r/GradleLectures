@@ -1,0 +1,22 @@
+
+== Gradle Tasks
+
+Can be based upon a task type
+
+[source,groovy]
+----
+include::{snippets}/task1.gradle[]
+----
+
+Can be free-form
+
+[source,groovy]
+----
+include::{snippets}/task2.gradle[indent=0]
+----
+
+=== Gradle Tasks : Configuration vs Action
+
+* Use of `<< {}` adds action to be executed
+** Tasks supplied by plugin will have default actions
+* Use of `{}` configures a task

@@ -1,20 +1,20 @@
 buildscript {
-  repositories {
-    jcenter()
-  }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
 
   dependencies {
     classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta3'
     classpath 'commons-httpclient:commons-httpclient:3.1'
-   }
+  }
 }
 
 plugins {
-    id 'com.github.jruby-gradle.base' version '1.1.4'
     id 'org.ysb33r.vfs' version '1.0-beta6'
     id 'org.asciidoctor.convert' version '1.5.3'
     id 'org.ysb33r.ivypot' version '0.3.7'
-
+    id 'com.github.jruby-gradle.base' version '1.2.1'
 }
 
 version = '1.0-MkJugMar2016'
@@ -29,10 +29,20 @@ ext {
 
     repositoryFolder = file('.repository')
     distFolder = file('.repository/dists')
+
+    exampleProjects = [
+        'jvm-java',
+        'jvm-scala',
+        'jvm-groovy',
+        'jvm-kotlin',
+        'jruby'
+    ]
 }
 
 repositories {
     jcenter()
+    mavenCentral()
+    maven { url "https://plugins.gradle.org/m2/" }
 }
 
 configurations {
@@ -47,7 +57,10 @@ dependencies {
     examples 'org.scala-lang:scala-compiler:2.11.8'
     examples 'org.codehaus.groovy:groovy-all:2.4.3'
     examples 'org.spockframework:spock-core:1.0-groovy-2.4'
-//    examples 'com.typesafe.sbt:compiler-interface:0.13.7'
+//    examples 'com.github.jruby-gradle:jruby-gradle-plugin:1.2.1'
+    examples 'gradle.plugin.com.zoltu:kotlin:1.0.1'
+    examples 'org.jetbrains.kotlin:kotlin-stdlib:1.0.1-1'
+//    examples 'rubygems:colorize:0.7.7'
     zinc "com.typesafe.zinc:zinc:${org.gradle.language.scala.internal.toolchain.DefaultScalaToolProvider.DEFAULT_ZINC_VERSION}"
 }
 
@@ -79,7 +92,7 @@ asciidoctor {
     }
 
     gemPath = jrubyPrepare.outputDir
-//  requires = ['asciidoctor-diagram']
+
     sources {
         include 'Gradle45min.adoc'
     }
@@ -109,16 +122,28 @@ asciidoctor {
 
 syncRemoteRepositories {
 
-    inputs.properties 'foo' : configurations.examples
+    inputs.properties 'foo1' : configurations.examples
+    inputs.properties 'foo2' : configurations.zinc
 
     repoRoot repositoryFolder
 
+    // tag::repositories[]
     repositories {
         jcenter()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    // end::repositories[]
+
+    repositories {
+        //        maven {
+//            url "${com.github.jrubygradle.JRubyPlugin.RUBYGEMS_RELEASE_URL}"
+//        }
+//        maven { url 'http://rubygems-proxy.torquebox.org/releases' }
     }
 
     configurations 'examples','zinc'
+//    configurations 'jrubyExec'
 
     includeBuildScriptDependencies = false
 
@@ -129,14 +154,14 @@ syncRemoteRepositories {
 
 build.dependsOn asciidoctor
 
-[ 'jvm-scala','jvm-groovy' ].each { projName ->
+exampleProjects.each { projName ->
     String taskName = "example-${projName}"
     tasks.create( taskName,GradleBuild) {
         dir = file("examples/${projName}")
         buildFile = "${dir}/build.gradle"
         tasks = ['build']
-//        startParameter = gradle.startParameter.newBuild()
     }
     build.dependsOn taskName
+    asciidoctor.mustRunAfter taskName
 }
 

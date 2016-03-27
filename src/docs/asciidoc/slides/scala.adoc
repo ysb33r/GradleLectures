@@ -1,0 +1,13 @@
+
+=== Scala Project
+
+[source,groovy]
+----
+repositories {
+  jcenter()
+}
+
+include::{sourcedir}/jvm-scala/build.gradle[tags=example]
+----
+
+

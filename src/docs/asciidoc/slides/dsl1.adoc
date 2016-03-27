@@ -17,10 +17,23 @@
 * Ivy repositories via `ivy {}`
 * Flat-directory repositories via `flatDir`
 
-== Gradle DSL
+=== Gradle Repositories
 
-* Underlying language is Groovy
-* You don't need to be a Groovy expert to be a Gradle power user
-* Groovy doesn't need `;` in most cases
-* Groovy does more with less punctuation, making it an ideal choice for a DSL
-* In most cases lines that do not end on an operator is considered a completed statement.
+[source,groovy]
+----
+include::{sourcedir}/../build.gradle[tags=repositories,indent=0]
+----
+
+[source,groovy]
+----
+repositories {
+    ivy {
+     url 'file://path/to/repo'
+     layout 'pattern', {
+        artifact '[module]/[revision]/[artifact](.[ext])'
+        ivy '[module]/[revision]/ivy.xml'
+     }
+    }
+}
+----
+

@@ -1,21 +1,8 @@
-buildscript {
-    repositories {
-        ivy {
-            url '../../.repository'
-            layout 'gradle'
-//            layout 'pattern', {
-//                artifact '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
-//            }
-        }
-    }
-}
+
 
 repositories {
     ivy {
         url '../../.repository'
         layout 'gradle'
-//            layout 'pattern', {
-//                artifact '[organisation]/[module]/[revision]/[type]s/[artifact]-[revision](.[ext])'
-//            }
     }
 }

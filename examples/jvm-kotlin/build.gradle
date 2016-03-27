@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        ivy {
+            url '../../.repository'
+            layout 'gradle'
+        }
+    }
+
+    dependencies {
+        classpath 'gradle.plugin.com.zoltu:kotlin:1.0.1'
+    }
+}
+
+
+apply from: '../../gradle/example-repo.gradle'
+
+
+
+apply plugin: "com.zoltu.kotlin"
+
+// tag::example[]
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.1-1"
+
+}
+// end::example[]
