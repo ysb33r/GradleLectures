@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        ivy {
+            url '../../.repository'
+            layout 'gradle'
+        }
+    }
+
+    dependencies {
+        classpath 'gradle.plugin.com.zoltu:kotlin:1.0.1'
+    }
+}
+
+
+apply from: '../../gradle/example-repo.gradle'
+
+
+apply plugin : 'java'
+apply plugin : 'groovy'
+apply plugin : 'com.zoltu.kotlin'
+apply plugin : 'application'
+
+// tag::example[]
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.1-1'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+}
+
+version = '1.0'
+mainClassName = "gradle.workshop.HelloJava"
+
+compileGroovy.dependsOn compileKotlin
+// end::example[]

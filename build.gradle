@@ -35,7 +35,8 @@ ext {
         'jvm-scala',
         'jvm-groovy',
         'jvm-kotlin',
-        'jruby'
+        'jruby',
+        'thewholehog'
     ]
 }
 

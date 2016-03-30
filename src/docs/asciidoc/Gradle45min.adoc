@@ -85,6 +85,8 @@ include::slides/publishing.adoc[]
 * Docker
 * Hadoop
 
+include::slides/thewholehog.adoc[]
+
 == Endgame
 
 * Gradle is breaking new ground
@@ -105,16 +107,18 @@ include::slides/publishing.adoc[]
 
 == Thank you
 
-* Email: ysb33r@gmail.com
+[cols="a,a"]
+|===
+| image::images/front-cover-thumbnail.png[Book,300,457]
+.<| * Email: ysb33r@gmail.com
 * Twitter / Ello : @ysb33r
-
-image::images/SchalkPanarama.jpg[]
-
-Keep an eye out for https://leanpub.com/idiomaticgradle
+* #idiomaticgradle
+* https://leanpub.com/idiomaticgradle
+|===
 
 == Migrations
 
-== Ant to Gradle
+=== Ant to Gradle
 
 Reflect Ant Build into Gradle
 
@@ -123,7 +127,7 @@ Reflect Ant Build into Gradle
 ant.importBuild('build.xml')
 ----
 
-== Maven to Gradle
+=== Maven to Gradle
 
 Go to directory where `pom.xml` is and type
 
@@ -132,10 +136,12 @@ Go to directory where `pom.xml` is and type
 gradle init --type pom
 ----
 
-== Publishing via VFS
+== Useful Stuff
+
+=== Publishing via VFS
 
 [source,groovy]
 ----
-include::{snippets}/vfs.gradle[]
+include::snippets/vfs.gradle[]
 ----
 

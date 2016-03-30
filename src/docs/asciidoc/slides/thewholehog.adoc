@@ -1,0 +1,25 @@
+== Tour de Force
+
+* Build a distributable application packaged as as ZIP
+* Runnable via shell script or batch file
+* Contains classes written Java, Groovy & Kotlin source
+* Test source code with Spock Framework
+
+=== Tour de Force
+[source,groovy]
+----
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'com.zoltu.kotlin' version '1.0.1'
+    id 'application'
+}
+
+repositories {
+  jcenter()
+}
+----
+[source,groovy]
+----
+include::{sourcedir}/thewholehog/build.gradle[tags=example]
+----

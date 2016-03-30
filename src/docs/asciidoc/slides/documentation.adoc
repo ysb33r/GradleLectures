@@ -1,6 +1,6 @@
 == Building Documentation
 
-* Javadodc, Groovydoc, Scaladoc (built-in)
+* Javadoc, Groovydoc, Scaladoc (built-in)
 * Doxygen (C, C++) (plugin)
 * Markdown (plugin)
 * Asciidoctor (plugin)
