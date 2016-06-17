@@ -5,19 +5,20 @@ buildscript {
     }
 
   dependencies {
-    classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta3'
+    classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0'
     classpath 'commons-httpclient:commons-httpclient:3.1'
   }
 }
 
 plugins {
-    id 'org.ysb33r.vfs' version '1.0-beta6'
     id 'org.asciidoctor.convert' version '1.5.3'
     id 'org.ysb33r.ivypot' version '0.3.7'
     id 'com.github.jruby-gradle.base' version '1.2.1'
 }
 
-version = '1.0-MkJugMar2016'
+apply plugin : 'org.ysb33r.vfs'
+
+version = '1.0-Jbcn2016'
 
 ext {
 
@@ -75,7 +76,7 @@ task download << {
                 revealjsDir, recursive: true, overwrite: true
         }
         if(!revealjsTemplateDir.exists()) {
-            cp "zip:https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${revealjsTemplateVersion}.zip!asciidoctor-reveal.js-${revealjsTemplateVersion}/templates/slim",
+            cp "zip:https://github.com/ysb33r/asciidoctor-reveal.js/archive/${revealjsTemplateVersion}.zip!asciidoctor-reveal.js-${revealjsTemplateVersion}/templates/slim",
                 revealjsTemplateDir, recursive: true, overwrite: true
         }
     }
