@@ -104,18 +104,21 @@ include::slides/thewholehog.adoc[]
 ** gradle-asciidoctor-plugin
 ** gradle-vfs-plugin
 * Code snippets tested as part of build
-* Source code: https://github.com/ysb33r/GradleLectures/tree/MkJugMar2016
+* Source code: https://github.com/ysb33r/GradleLectures/tree/Jbcn2016
+
+== Writing Plugins?
+
+image::images/front-cover-thumbnail-2.png[Book,337,285]
+
+https://leanpub.com/b/idiomaticgradle
 
 == Thank you
 
-[cols="a,a"]
-|===
-| image::images/front-cover-thumbnail.png[Book,300,457]
-.<| * Email: ysb33r@gmail.com
+* Email: ysb33r@gmail.com
 * Twitter / Ello : @ysb33r
 * #idiomaticgradle
-* https://leanpub.com/idiomaticgradle
-|===
+
+(Just in-case you need a buildtool consultant)
 
 == Migrations
 

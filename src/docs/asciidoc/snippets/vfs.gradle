@@ -1,5 +1,5 @@
 plugins {
-    id "org.ysb33r.vfs" version "1.0-beta3"
+    id "org.ysb33r.vfs" version "1.0"
 }
 
 task publishToWebserver << {
