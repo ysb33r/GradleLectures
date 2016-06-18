@@ -9,7 +9,7 @@ Schalk Cronjé <ysb33r@gmail.com>
 :revealjs_controls: true
 :revealjs_history: true
 :revealjs_slideNumber : true
-:revealjs_center: true
+:revealjs_center: false
 :docinfo1:
 coderay-css: styles/asciidoctor-coderay.css
 
@@ -29,6 +29,30 @@ image::images/gradle-logo-pink.png[height="250",width="250"]
 @DailyGradle
 
 #gradleTip
+
+== {nbsp}
+
+image::images/sdkman-logo.png[]
+
+=== SdkMan
+
+* Manages parallel version of multiple SDKs
+* Mostly for (but not limited to) JVM-related systems
+* Windows users can use Posh-GVM (Powershell)
+** Windows 10 Bash ??
+
+[source,bash]
+----
+curl -s http://get.sdkman.io | bash
+----
+
+=== SdkMan
+
+image:images/sdkman-logo.png[width=40%,height=40%]
+
+* *SdkMan*: http://sdkman.io
+* *Posh-GVM*: https://github.com/flofreud/posh-gvm
+* @sdkmanager
 
 == Gradle
 
@@ -66,7 +90,8 @@ include::slides/jruby.adoc[]
 * Frege (plugin)
 * Golang (plugin)
 * Gosu (plugin)
-* Mirah (plugin in progress)
+* Ceyon (plugin)
+* Mirah (plugin)
 
 == Support for Other Buildsystems
 
