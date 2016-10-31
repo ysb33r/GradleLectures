@@ -1,0 +1,35 @@
+= Copy & Archiving
+:toc: right
+
+Goto `exercises/copy-files` and open the `build.gradle` file.
+
+== Copying files
+
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=copyfiles]
+----
+
+== Renaming files
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=renamefiles]
+----
+
+== Manipulating content
+
+
+== Creating a Zip
+
+== Copying from a Zip
+
+== Creating a Tar
+
+== Copying from a Tar
+
+== Copying & Customt Tasks
+
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=customCopyFiles]
+----

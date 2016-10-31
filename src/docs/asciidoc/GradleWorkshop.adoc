@@ -1,19 +1,36 @@
-= Gradle For Testers
+= Migration to Gradle Workshop : DevoxxMA 2016
 Schalk Cronjé <ysb33r@gmail.com>
 :imagesdir: images
 :snippets: ../snippets
 :sourcedir: ../../../examples
 :gradledsl: http://gradle.org/docs/{gradlever}/dsl
-:revealjs_keyboard: true
-:revealjs_overview: true
-:revealjs_theme: white
-:revealjs_controls: false
-:revealjs_history: true
-:revealjs_slideNumber : true
-:revealjs_center: true
-coderay-css: stylesheets/asciidoctor-coderay.css
 
 
+Gradle is cool and it is cool because it is a next-generation build -and-deply tool breaking new ground.
+It is the default build tool in the Android tool chain.
+It is growing in popularity across JVM, .NET & native platforms.
+Changes are good that you will have to deal with it some or other time in in the future.
+The purpose of this labs session is to accelerate learning and help you get going with Gradle a lot quicker.
+
+In this hands-on session we'll cover:
+
+* Building Java projects
+* The power of Copy, Jar & Zip tasks
+* Building other JVM language projects
+* Understanding source sets, configurations & extensions
+* Lazy evaluation
+* Minimal Groovy syntax
+* Migrating from Maven & Ant
+
+This should leave you with enough of an understanding to tackle more complex build projects of your own or to migrate your current build to more maintable, more-readable, Gradle-based build.
+
+You will need a laptop with at least JDK7 installed and any source code editor (IntelliJ or Eclipse recommended).
+
+== Copyright & License
+
+This workshop is licensed under Creative Commons with Attribution.
+
+////
 == Schedule
 
 * 09:00 Introduction to Gradle
@@ -26,9 +43,6 @@ coderay-css: stylesheets/asciidoctor-coderay.css
 * 16:00 Open workshop
 * 18:00 _Close_
 
-== Copyright & License
-
-This workshop is licensed under Creative Commons with Attribution.
 
 == Introduction To Gradle
 
@@ -57,16 +71,16 @@ include::slides/dsl.adoc[]
 * Take the `examples/jvm-java` example and publish to local Maven Repository
 * Hint: `apply plugin 'maven'`
 
-////
 == Using Testing Frameworks
 
 * Spock
 * _Selenium_
 * Cucumber
-////
+
 
 include::slides/ftpserver.adoc[]
 
 == Open Workshop
 
 In small groups, take topics from taskboard, experiment and try to solve them
+////

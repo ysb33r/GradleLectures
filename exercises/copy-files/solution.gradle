@@ -1,0 +1,40 @@
+// tag::copyfiles[]
+task copyFiles ( type : Copy ) {
+    from 'sources', {
+        include '*.txt'
+        exclude 'b.txt'
+    }
+    into "${buildDir}/text-files"
+}
+// end::copyfiles[]
+
+// tag::renamefiles[]
+task copyFilesAndRename( type : Copy ) {
+    from 'sources', {
+        include '*.txt'
+    }
+    into "${buildDir}/renamed-text-files"
+    rename ~/(.+)(\.txt)/, '$1.text'
+}
+// tag::renamefiles[]
+
+// tag::customCopyFiles[]
+task customCopyFiles {
+    doLast {
+        copy {
+            from 'sources', {
+                include '*.txt'
+                exclude 'b.txt'
+            }
+            into "${buildDir}/custom-text-files"
+        }
+    }
+}
+// end::customCopyFiles[]
+
+
+
+// This task is purely here to help with workshop testing
+task workshoptest {
+    dependsOn copyFiles, customCopyFiles, copyFilesAndRename
+}
