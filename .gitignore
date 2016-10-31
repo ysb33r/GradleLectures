@@ -15,3 +15,6 @@ gradle-app.setting
 .repository
 dists
 TMP
+
+diag-*.png
+src/docs/asciidoc/.asciidoctor

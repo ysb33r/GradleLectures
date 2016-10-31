@@ -11,6 +11,7 @@ include::{exercises}/copy-files/solution.gradle[tags=copyfiles]
 ----
 
 == Renaming files
+
 [source,groovy]
 ----
 include::{exercises}/copy-files/solution.gradle[tags=renamefiles]
@@ -18,12 +19,47 @@ include::{exercises}/copy-files/solution.gradle[tags=renamefiles]
 
 == Manipulating content
 
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=editfiles]
+----
 
 == Creating a Zip
 
-== Copying from a Zip
+[ditaa]
+....
+            /------\
+            | Copy |
+            \------/
+              ^  ^
+              |  |
+       +------+  +-----+
+       |               |
+    /-----\         /-----\
+    | Zip |         | Tar |
+    \-----/         \-----/
+       ^
+       |
+    /-----\
+    | Jar |
+    \-----/
+
+....
+
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=zipit]
+----
 
 == Creating a Tar
+
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=tarit]
+----
+
+== Copying from a Zip
+
 
 == Copying from a Tar
 

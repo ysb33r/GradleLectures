@@ -1,24 +1,23 @@
-plugins {
-    id 'org.asciidoctor.convert' version '1.5.3'
+buildscript {
+    repositories {
+        jcenter()
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'org.asciidoctor:asciidoctorj-diagram:1.3.1'
+    }
 }
 
-apply from : 'repositories.gradle'
+repositories {
+    jcenter()
+}
 
 
-//ext {
-//    repoDir = file("${rootProject.projectDir}/.repository")
-//}
-
-////if(repoDir.exists()) {
-////
-////    buildscript {
-////        dependencies {
-////            classpath "org.asciidoctor:asciidoctor-gradle-plugin:1.5.3"
-////        }
-////    }
-////
-//}
-
+apply plugin : 'org.asciidoctor.convert'
 
 version '1.0.0-DevoxxMA-2016'
 
@@ -43,72 +42,58 @@ exercises.each { exercise ->
     })
 }
 
-//task bootstrapOfflineRepository( type : GradleBuild ) {
-//    group "Workshop Initialisation"
-//    description "Downloads all dependencies to an offline repository"
-//    enabled = !gradle.startParameter.isOffline()
-//
-//    tasks = ['syncRemoteRepositories']
-//    dir = file("gradle/bootstrapOffline")
-//    buildFile = file("gradle/bootstrapOffline/build.gradle")
-//    startParameter.projectCacheDir = file("${projectDir}/gradle/bootstrapOffline/.gradle")
-//}
-
-//if(repoDir.exists()) {
+task bootstrap {
+    dependsOn workshopSolutionTest, asciidoctor
+}
 
 
-    repositories {
-//        ivy {
-//            url repoDir.toURI()
-//            layout 'gradle'
-//        }
-        jcenter()
+asciidoctor {
+
+  requires 'asciidoctor-diagram'
+
+  sources {
+    include 'GradleWorkshop.adoc'
+      include 'copy.adoc'
+  }
+
+  resources {
+    from(sourceDir) {
+      include 'images/**'
+      include 'styles/**'
+      include 'snippets/**'
+      exclude 'images/diag-*.png.cache'
     }
 
-    asciidoctor {
-      sources {
-        include 'GradleWorkshop.adoc'
-          include 'copy.adoc'
-      }
+  }
 
-      resources {
-        from(sourceDir) {
-          include 'images/**'
-          include 'styles/**'
-          include 'snippets/**'
-        }
-
-      }
-
-       attributes 'exercises' : file('exercises'),
-                  imagesoutdir : 'images',
-                  'source-highlighter' : 'coderay',
-                  gradlever : gradle.gradleVersion
+   attributes 'exercises' : file('exercises'),
+              imagesoutdir : file('src/docs/asciidoc/images'),
+              'source-highlighter' : 'coderay',
+              gradlever : gradle.gradleVersion,
+              imagesdir : file('src/docs/asciidoc/images')
 
 
-        backends 'html5'
+    backends 'html5'
 
+}
+
+
+task distZip ( type : Zip ) {
+    destinationDir buildDir
+    archiveName 'GradleWorkshop.zip'
+    from projectDir, {
+        include 'src/**'
+        include 'exercises/**'
+        include '.repository/**'
+        include 'dists/**'
+        exclude 'exercises/*/build'
+        exclude 'exercises/*/.gradle'
     }
 
-//}
-
-
-//task distZip ( type : Zip ) {
-//    destinationDir buildDir
-//    archiveName 'GradleWorkshop.zip'
-//    from projectDir, {
-//        include 'src/**'
-//        include 'examples/**'
-//        include '.repository/**'
-//        include 'dists/**'
-//        exclude 'examples/*/build'
-//        exclude 'examples/*/.gradle'
-//    }
-//
-//    include 'build.gradle'
-//    include 'gradle'
-//    include 'gradlew*'
-//    include 'README.adoc'
-//}
+    include 'build.gradle'
+    include 'gradle'
+    include 'gradlew*'
+    include 'README.adoc'
+}
 
 

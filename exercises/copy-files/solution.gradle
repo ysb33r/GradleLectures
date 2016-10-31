@@ -16,7 +16,48 @@ task copyFilesAndRename( type : Copy ) {
     into "${buildDir}/renamed-text-files"
     rename ~/(.+)(\.txt)/, '$1.text'
 }
-// tag::renamefiles[]
+// end::renamefiles[]
+
+// tag::editfiles[]
+import org.apache.tools.ant.filters.ReplaceTokens
+
+task copyFilesAndModify( type : Copy ) {
+    from 'sources', {
+        include '*.txt'
+    }
+    into "${buildDir}/edited-text-files"
+
+    filter { line ->
+        line.replaceAll( ~/foo/,'foo.bar')
+    }
+    filter ReplaceTokens, tokens : ['DEVOXX': 'Devoxx MA is the place to be' ]
+}
+// end::editfiles[]
+
+// tag::zipit[]
+task zipFiles( type : Zip ) {
+    from 'sources', {
+        include '*.txt'
+        exclude 'b.txt'
+    }
+    into "a-sub-folder"
+    destinationDir buildDir
+    archiveName 'devoxxma.zip'
+}
+// end::zipit[]
+
+// tag::tarit[]
+task tarFiles( type : Tar ) {
+    from 'sources', {
+        include '*.txt'
+        exclude 'b.txt'
+    }
+    into "a-sub-folder"
+    destinationDir buildDir
+    archiveName 'devoxxma.tar.bz2'
+    compression Compression.BZIP2
+}
+// end::tarit[]
 
 // tag::customCopyFiles[]
 task customCopyFiles {
@@ -36,5 +77,6 @@ task customCopyFiles {
 
 // This task is purely here to help with workshop testing
 task workshoptest {
-    dependsOn copyFiles, customCopyFiles, copyFilesAndRename
+    dependsOn copyFiles, customCopyFiles, copyFilesAndRename, copyFilesAndModify
+    dependsOn zipFiles, tarFiles
 }
