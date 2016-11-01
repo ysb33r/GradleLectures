@@ -1,0 +1,10 @@
+<project name='checksum'>
+    <target name='checksum'>
+        <checksum property='cs'>
+            <fileset dir='sources'>
+                <include name='a.txt'/>
+            </fileset>
+        </checksum>
+        <echo>${cs}</echo>
+    </target>
+</project>

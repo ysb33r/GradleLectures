@@ -47,3 +47,15 @@ The location of resources can also be changed within a `sourceSets` block
 ----
 include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets2]
 ----
+
+== Modifying Resources
+
+Process of resources before packaging and usage can easily be done as the `processResources`
+task is actually a `Copy` tash type.
+
+[source,groovy]
+----
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=editresources]
+----
+
+link:ant.html[Next: Migrating from Ant]

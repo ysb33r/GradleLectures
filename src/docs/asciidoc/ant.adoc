@@ -1,0 +1,9 @@
+= Migrating from Ant
+
+
+== Importing Builds
+
+[source,groovy]
+----
+include::{exercises}/import-ant/solution.gradle[tags=ant]
+----

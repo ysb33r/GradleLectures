@@ -17,7 +17,7 @@ In this hands-on session we'll cover:
 * Building Java projects
 * The power of Copy, Jar & Zip tasks
 * Building other JVM language projects
-* Understanding source sets, configurations & extensions
+* Understanding source sets & configurations
 * Lazy evaluation
 * Minimal Groovy syntax
 * Migrating from Maven & Ant

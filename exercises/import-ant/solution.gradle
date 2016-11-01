@@ -1,0 +1,11 @@
+// tag::ant[]
+ant.importBuild('build.xml')
+// end::ant[]
+
+task clean {
+    delete buildDir
+}
+
+task workshoptest {
+    dependsOn checksum
+}
