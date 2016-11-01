@@ -1,1 +1,15 @@
-This presentation entitled '${title}' is generated using Lazybones and built with Asciidoctor-RevealJS
+= DevoxxMA 2016 Gradle Workshop
+
+Clone this workshop
+
+[source,bash]
+----
+git clone https://github.com/ysb33r/GradleLectures.git
+git checkout DevoxxMA
+./gradlew bootstrap bootstrapClean
+----
+
+.Notes
+* If you don't have git installed, you can download a ZIP from
+https://github.com/ysb33r/GradleLectures/
+* If using Windows replace usage of `./gradlew` with `gradlew.bat`.

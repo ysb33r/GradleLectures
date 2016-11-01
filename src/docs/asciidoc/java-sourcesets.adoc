@@ -9,6 +9,31 @@
 
 Goto `exercises/jvm-sourcesets` and open then empty `build.gradle` file.
 
+In this specific project the production code, which is is written in Java is in
+`sources` whereas as the test code written using Spock is in `test`.
 
+Source sets can be modified in a `sourceSets` block.
 
+[source,groovy]
+----
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets1]
+----
 
+Each source set i.e. `main`, `test` can be defined using `sourceSets.main`, `sourceSets.test` etc.
+
+Each JVM language group is defined as a block within each of the source sets.
+
+Since the Java code is in a non-standard location we can define it with:
+
+[source,groovy]
+----
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets_java]
+----
+
+In a similar fashion we can override the location for the test source sets. As this is Spock
+it needs to be done in the `groovy` block.
+
+[source,groovy]
+----
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets_groovy]
+----

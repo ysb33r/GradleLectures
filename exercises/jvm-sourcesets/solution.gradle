@@ -8,18 +8,28 @@ dependencies {
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
 }
 
+// tag::sourcesets1[]
 sourceSets {
+// tag::sourcesets_java[]
     main {
+// end::sourcesets1[]
         java {
             srcDirs = [ 'sources' ]
         }
+// tag::sourcesets1[]
     }
+// end::sourcesets_java[]
+// tag::sourcesets_groovy[]
     test {
+// end::sourcesets1[]
         groovy {
             srcDirs = [ 'test' ]
         }
+// tag::sourcesets1[]
     }
+// end::sourcesets_groovy[]
 }
+// end::sourcesets1[]
 
 task workshoptest {
     dependsOn build
