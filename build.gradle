@@ -23,7 +23,7 @@ version '1.0.0-DevoxxMA-2016'
 
 ext {
     exercises = [
-        'copy-files', 'jvm-java', 'jvm-groovy'
+        'copy-files', 'jvm-java', 'jvm-groovy', 'jvm-sourcesets'
     ]
 }
 
@@ -67,6 +67,7 @@ asciidoctor {
       include 'GradleWorkshop.adoc'
       include 'copy.adoc'
       include 'java.adoc'
+      include 'java-sourcesets.adoc'
   }
 
   resources {

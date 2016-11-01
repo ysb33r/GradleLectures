@@ -7,4 +7,8 @@
 
 == Modifying default locations
 
+Goto `exercises/jvm-sourcesets` and open then empty `build.gradle` file.
+
+
+
 
