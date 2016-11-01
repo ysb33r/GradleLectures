@@ -11,5 +11,5 @@ git checkout DevoxxMA
 
 .Notes
 * If you don't have git installed, you can download a ZIP from
-https://github.com/ysb33r/GradleLectures/
+https://github.com/ysb33r/GradleLectures/archive/DevoxxMA2016.zip.
 * If using Windows replace usage of `./gradlew` with `gradlew.bat`.
