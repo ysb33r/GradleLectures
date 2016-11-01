@@ -31,6 +31,17 @@ sourceSets {
 }
 // end::sourcesets1[]
 
+// tag::sourcesets2[]
+sourceSets {
+    main {
+        resources {
+            srcDirs = [ 'resources' ]
+        }
+    }
+}
+// tag::sourcesets2[]
+
+
 task workshoptest {
     dependsOn build
 }

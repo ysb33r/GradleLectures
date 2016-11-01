@@ -27,13 +27,23 @@ Since the Java code is in a non-standard location we can define it with:
 
 [source,groovy]
 ----
-include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets_java]
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets_java,indent=0]
 ----
+
 
 In a similar fashion we can override the location for the test source sets. As this is Spock
 it needs to be done in the `groovy` block.
 
 [source,groovy]
 ----
-include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets_groovy]
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets_groovy,indent=0]
+----
+
+== Resources
+
+The location of resources can also be changed within a `sourceSets` block
+
+[source,groovy]
+----
+include::{exercises}/jvm-sourcesets/solution.gradle[tags=sourcesets2]
 ----
