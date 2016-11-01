@@ -1,9 +1,34 @@
 = Migrating from Ant
 
+Go to `exercises/import-ant` and open empty `build.gradle` file.
+
+Open the `build.xml` file and inspect it.
 
 == Importing Builds
+
+Any Ant build file can be imported.
 
 [source,groovy]
 ----
 include::{exercises}/import-ant/solution.gradle[tags=ant]
 ----
+
+Run `.gradlew tasks` and inspect the list of tasks
+
+== Imported Tasks are Gradle Tasks
+
+Imported tasks can be treated like any other Gradle task.
+
+[source,groovy]
+----
+include::{exercises}/import-ant/solution.gradle[tags=dependsant]
+----
+
+== Passing Properties
+
+[source,groovy]
+----
+include::{exercises}/import-ant/solution.gradle[tags=propertyant]
+----
+
+Run `./gradlew helloWorld`

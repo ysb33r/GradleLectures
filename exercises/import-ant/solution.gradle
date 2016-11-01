@@ -1,11 +1,25 @@
+// tag::propertyant[]
+ant.properties.hello = 'Devoxx'
+// end::propertyant[]
+
 // tag::ant[]
 ant.importBuild('build.xml')
 // end::ant[]
+
+
+
+// tag::dependsant[]
+task anotherTask {
+    dependsOn checksum
+}
+// tag::dependsant[]
+
+
 
 task clean {
     delete buildDir
 }
 
 task workshoptest {
-    dependsOn checksum
+    dependsOn checksum, helloWorld
 }

@@ -1,4 +1,7 @@
-<project name='checksum'>
+<project name='antToGradle'>
+
+    <property name="hello">world</property>
+
     <target name='checksum'>
         <checksum property='cs'>
             <fileset dir='sources'>
@@ -7,4 +10,9 @@
         </checksum>
         <echo>${cs}</echo>
     </target>
+
+    <target name="helloWorld">
+        <echo>Hello, ${hello}</echo>
+    </target>
+
 </project>
