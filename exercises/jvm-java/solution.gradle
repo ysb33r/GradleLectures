@@ -11,7 +11,7 @@ repositories {
 
 // tag::javastart3[]
 dependencies {
-    testCompile 'junit:junit:4.1'
+    testCompile 'junit:junit:4.12'
 }
 // end::javastart3[]
 
