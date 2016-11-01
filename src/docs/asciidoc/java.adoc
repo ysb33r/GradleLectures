@@ -34,9 +34,18 @@ include::{exercises}/jvm-java/solution.gradle[tags=javastart3]
 Run `./gradlew dependencies` to see the configurations that were added by the `java` plugin
 as well as the transitive dependencies.
 
+.Gradle Dependency Management
+* Easy to use
+* Flexible to configure for exceptions
+* Uses `dependencies` closure
+* First word on line is usually name of a configuration.
+** Configurations are usually supplied by plugins.
+* Dependencies are downloaded from repositories
+* Maven coordinates are used as format
+
 == Obtaining test reports
 
-Edit `examples/jvm-java/src/devoxxma/workshop/ExampleTest.java` and uncomment the
+Edit `exercises/jvm-java/src/devoxxma/workshop/ExampleTest.java` and uncomment the
 `thisOneWillFail` test.
 
 Run `./gradlew test` and have a look at the output. Open the provided link in a browser.
@@ -45,52 +54,38 @@ Run `./gradlew test` and have a look at the output. Open the provided link in a 
 
 Because Spock Framework is awesome...
 
+Goto `exercises/jvm-groovy` and open the `build.gradle` file.
+
+Spock is a Groovy-based framework, therefore the `groovy` plugins needs to be applied.
+
+[source,groovy]
+----
+include::{exercises}/jvm-java/solution.gradle[tags=javastart1]
+----
+
+Run `./gradlew tasks --all` to inspect all of the new tasks added by the `groovy` plugin.
+
+NOTE: The `groovy` plugin automatically applied the `java` plugin.
+
+Spock dependency is added in the `testCompile` configuration as it is inly used for testing.
+
+[source,groovy]
+----
+include::{exercises}/jvm-java/solution.gradle[tags=javastart3]
+----
+
+Run `./gradlew dependencies` and look and the list of transitive dependencies`
+
+NOTE: No new configurations  were added
+
+Run `./gradlew build` to build and test.
+
+Edit the `exercis/jvm-groovy/src/test/groovy/devoxxma/workshop/ExampleSpec.groovy` and
+remove the `@Ignore`.
+
+link:java-sourcesets.html[Next: SourceSets]
 
 ////
-== First project
-
-* *Workdir*: `examples/jvm-java-first`
-* Open `build.gradle`
-[source,groovy]
-----
-include::{snippets}/java.gradle[]
-----
-* Convention over configuration
-* Intelligence provided by plugin
-
-[source]
-----
-src -- main -- java
-----
-
-== Add some testing
-
-* *Workdir*: `examples/jvm-java`
-* Open `build.gradle`
-
-[cols="2*"]
-|===
-a|
-[source,groovy]
-----
-include::{snippets}/java2.gradle[]
-----
-a|
-[source,groovy]
-----
-include::{sourcedir}/jvm-java/build.gradle[]
-----
-|===
-
-== Gradle Dependency Management
-
-* Easy to use
-* Flexible to configure for exceptions
-* Uses `dependencies` closure
-* First word on line is usually name of a configuration.
-** Configurations are usually supplied by plugins.
-* Dependencies are downloaded from repositories
-* Maven coordinates are used as format
 
 == Gradle Repositories
 

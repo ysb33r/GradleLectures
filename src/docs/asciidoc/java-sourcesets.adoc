@@ -1,0 +1,10 @@
+= Java Source Sets
+:toc: right
+
+* Gradle uses convention over configuration.
+* Expects `src/main/java`, `src/main/groovy`, `src/main/kotlin` for code
+* Expects `src/test/java`, `src/test/groovy`, `src/test/kotlin` for testing
+
+== Modifying default locations
+
+
