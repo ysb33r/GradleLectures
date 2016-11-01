@@ -1,0 +1,26 @@
+
+// tag::javastart1[]
+apply plugin : 'java'
+// end::javastart1[]
+
+// tag::javastart2[]
+repositories {
+    jcenter()
+}
+// end::javastart2[]
+
+// tag::javastart3[]
+dependencies {
+    testCompile 'junit:junit:4.1'
+}
+// end::javastar3[]
+
+
+task workshoptest {
+    dependsOn build
+}
+
+
+
+
+

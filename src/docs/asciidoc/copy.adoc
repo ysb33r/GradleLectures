@@ -60,12 +60,23 @@ include::{exercises}/copy-files/solution.gradle[tags=tarit]
 
 == Copying from a Zip
 
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=unzipfiles]
+----
 
 == Copying from a Tar
 
-== Copying & Customt Tasks
+[source,groovy]
+----
+include::{exercises}/copy-files/solution.gradle[tags=untarfiles]
+----
+
+== Copying inside Custom Tasks
 
 [source,groovy]
 ----
 include::{exercises}/copy-files/solution.gradle[tags=customCopyFiles]
 ----
+
+link:java.html[Next: Java project]

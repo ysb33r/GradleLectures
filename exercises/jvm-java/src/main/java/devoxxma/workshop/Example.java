@@ -1,3 +1,5 @@
+package devoxxma.workshop;
+
 class Example {
     public void setName(final String nm) {
         name = nm;

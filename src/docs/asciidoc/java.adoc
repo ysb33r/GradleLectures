@@ -1,0 +1,103 @@
+= Java Projects
+:toc: right
+
+Goto `exercises/jvm-java` and open the `build.gradle` file.
+
+== Basics of a Java Project
+
+Run `./gradlew tasks` and take notice of the list of tasks.
+
+Now apply the `java` plugin.
+
+[source,groovy]
+----
+include::{exercises}/jvm-java/solution.gradle[tags=javastart1]
+----
+
+Run `./gradlew tasks` again and note all of the main tasks that the plugin has added.
+Run `./gradlew tasks -all` to see __all__ of the added tasks.
+
+Repositories for dependencies are configured in a `repositories {}` block.
+
+[source,groovy]
+----
+include::{exercises}/jvm-java/solution.gradle[tags=javastart2]
+----
+
+Dependencies are added in the `dependencies {}` block on a per-configuration basis.
+
+[source,groovy]
+----
+include::{exercises}/jvm-java/solution.gradle[tags=javastart3]
+----
+
+Run `./gradlew dependencies` to see the configurations that were added by the `java` plugin
+as well as the transitive dependencies.
+
+== Obtaining test reports
+
+Edit `examples/jvm-java/src/devoxxma/workshop/ExampleTest.java` and uncomment the
+`thisOneWillFail` test.
+
+Run `./gradlew test` and have a look at the output. Open the provided link in a browser.
+
+== Building Java, Test with Spock
+
+Because Spock Framework is awesome...
+
+
+////
+== First project
+
+* *Workdir*: `examples/jvm-java-first`
+* Open `build.gradle`
+[source,groovy]
+----
+include::{snippets}/java.gradle[]
+----
+* Convention over configuration
+* Intelligence provided by plugin
+
+[source]
+----
+src -- main -- java
+----
+
+== Add some testing
+
+* *Workdir*: `examples/jvm-java`
+* Open `build.gradle`
+
+[cols="2*"]
+|===
+a|
+[source,groovy]
+----
+include::{snippets}/java2.gradle[]
+----
+a|
+[source,groovy]
+----
+include::{sourcedir}/jvm-java/build.gradle[]
+----
+|===
+
+== Gradle Dependency Management
+
+* Easy to use
+* Flexible to configure for exceptions
+* Uses `dependencies` closure
+* First word on line is usually name of a configuration.
+** Configurations are usually supplied by plugins.
+* Dependencies are downloaded from repositories
+* Maven coordinates are used as format
+
+== Gradle Repositories
+
+* Specified within a `repositories` closure
+* Processed in listed order to look for dependencies
+* 'jcenter()` preferred open-source repo.
+* `mavenLocal()`, `mavenCentral()`, `maven {}`
+* Ivy repositories via `ivy {}`
+* Flat-directory repositories via `flatDir`
+////

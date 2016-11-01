@@ -1,4 +1,4 @@
-package atagg.workshop;
+package devoxx.workshop;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Ignore;
 
-class ExampleTest {
+public class ExampleTest {
     @Test
     public void thisOneWillPass() {
 
@@ -18,9 +18,9 @@ class ExampleTest {
         assertTrue (true);
     }
 
-    @Test
-    public void thisOneWillFail() {
-        assertTrue (false);
-    }
+//    @Test
+//    public void thisOneWillFail() {
+//        assertTrue (false);
+//    }
 }
 

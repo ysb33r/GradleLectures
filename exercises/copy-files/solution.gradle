@@ -1,3 +1,4 @@
+
 // tag::copyfiles[]
 task copyFiles ( type : Copy ) {
     from 'sources', {
@@ -59,6 +60,26 @@ task tarFiles( type : Tar ) {
 }
 // end::tarit[]
 
+// tag::unzipfiles[]
+task copyFilesFromZip ( type : Copy ) {
+    from zipTree('sources/example.zip'), {
+        include '*.txt'
+        exclude 'b.txt'
+    }
+    into "${buildDir}/unzipped-text-files"
+}
+// end::unzipfiles[]
+
+// tag::untarfiles[]
+task copyFilesFromTar ( type : Copy ) {
+    from tarTree(resources.gzip('sources/example.tgz')), {
+        include '*.txt'
+        exclude 'b.txt'
+    }
+    into "${buildDir}/untarred-text-files"
+}
+// end::untarfiles[]
+
 // tag::customCopyFiles[]
 task customCopyFiles {
     doLast {
@@ -73,10 +94,13 @@ task customCopyFiles {
 }
 // end::customCopyFiles[]
 
-
+task clean {
+    delete buildDir
+}
 
 // This task is purely here to help with workshop testing
 task workshoptest {
     dependsOn copyFiles, customCopyFiles, copyFilesAndRename, copyFilesAndModify
-    dependsOn zipFiles, tarFiles
+    dependsOn zipFiles, tarFiles, copyFilesFromZip, copyFilesFromTar
 }
+

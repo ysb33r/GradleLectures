@@ -23,7 +23,7 @@ version '1.0.0-DevoxxMA-2016'
 
 ext {
     exercises = [
-        'copy-files'
+        'copy-files', 'jvm-java'
     ]
 }
 
@@ -46,14 +46,27 @@ task bootstrap {
     dependsOn workshopSolutionTest, asciidoctor
 }
 
+task bootstrapClean {
+    dependsOn exercises.collect { exercise ->
+        tasks.create ("clean${exercise.capitalize()}", GradleBuild) {
+            group 'Workshop Preparation'
+            description "Cleans the '${exercise}' exercise"
+            tasks = [ 'clean']
+            dir = file("exercises/${exercise}")
+            buildFile = file("exercises/${exercise}/solution.gradle")
+            startParameter.projectCacheDir = file("${projectDir}/exercises/${exercise}/.gradle")
+        }
+    }
+}
 
 asciidoctor {
 
   requires 'asciidoctor-diagram'
 
   sources {
-    include 'GradleWorkshop.adoc'
+      include 'GradleWorkshop.adoc'
       include 'copy.adoc'
+      include 'java.adoc'
   }
 
   resources {

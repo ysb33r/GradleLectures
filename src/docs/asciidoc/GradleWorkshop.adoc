@@ -30,6 +30,8 @@ You will need a laptop with at least JDK7 installed and any source code editor (
 
 This workshop is licensed under Creative Commons with Attribution.
 
+link:copy.html[Next: Copying files]
+
 ////
 == Schedule
 

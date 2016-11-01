@@ -1,0 +1,33 @@
+plugins {
+    id "org.ysb33r.ivypot" version "0.4"
+}
+
+apply from : "${projectDir}/../../dependencies.gradle"
+
+syncRemoteRepositories {
+
+//    inputs.properties 'dependencies', { )configurations.exercises + configurations.core).asPath }
+    repoRoot "${projectDir}/../../.repository"
+
+    repositories {
+        jcenter()
+        mavenCentral()
+//        mavenLocal()
+//        maven {
+//            url 'http://foo/bar'
+//            credentials {
+//                username 'pig'
+//                password 'hog'
+//            }
+//        }
+//
+//        ivy {
+//            url 'http://foo.bar'  (3)
+//        }
+
+    }
+
+    configurations 'core', 'exercises'
+
+//    includeBuildScriptDependencies = false (5)
+}
